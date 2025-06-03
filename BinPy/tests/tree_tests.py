@@ -7,9 +7,9 @@ from BinPy.combinational.combinational import *
 
 from nose.tools import with_setup, nottest
 
-'''
+"""
 Testing backtrack() function for depths from 0 to 4.
-'''
+"""
 
 
 def get_tree_for_depth_checking(depth):
@@ -63,9 +63,9 @@ def backtrack_depth_test():
         tree_inst, tree_testing = get_tree_for_depth_checking(i)
         compare_trees(tree_inst, tree_testing, i)
 
-'''
+"""
 Test to see if the set_depth method works
-'''
+"""
 
 
 def set_depth_test():
@@ -76,9 +76,9 @@ def set_depth_test():
         tree_inst.backtrack()
         compare_trees(tree_inst, tree_testing, i)
 
-'''
+"""
 Test not following Cycles functionality
-'''
+"""
 
 
 def not_following_cycles_test():

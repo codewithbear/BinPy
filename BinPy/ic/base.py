@@ -365,43 +365,43 @@ class Logic():
         # Tri state Logic can be introduced later on ...
 
     def __add__(self, right):
-        '''OR Gate equivalent'''
+        """OR Gate equivalent"""
         return Logic(OR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's OR Gate implementation
 
     def __or__(self, right):
-        '''OR Gate equivalent'''
+        """OR Gate equivalent"""
         return Logic(OR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's OR Gate implementation
 
     def __xor__(self, right):
-        '''XOR Gate'''
+        """XOR Gate"""
         return Logic(XOR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's XOR Gate implementation
 
     def __mul__(self, right):
-        '''AND Gate'''
+        """AND Gate"""
         return Logic(AND(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's AND Gate implementation
 
     def __and__(self, right):
-        '''AND Gate'''
+        """AND Gate"""
         return Logic(AND(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's AND Gate implementation
 
     def __invert__(self):
-        '''NOT Gate'''
+        """NOT Gate"""
         return Logic(NOT(self.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's NOT Gate implementation
 
     def __call__(self):
-        '''Returns the binary equivalent of the Logic value of self'''
+        """Returns the binary equivalent of the Logic value of self"""
         return int(self.value)
 
     def __int__(self):

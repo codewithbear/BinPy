@@ -1,5 +1,5 @@
 def makeCompatible(expr):
-    '''Used by convertExpression to convert logical operators to english words.'''
+    """Used by convertExpression to convert logical operators to english words."""
     expr = expr.replace('~&', ' NAND ')
     expr = expr.replace('~|', ' NOR ')
     expr = expr.replace('~^', ' XNOR ')
@@ -11,7 +11,7 @@ def makeCompatible(expr):
 
 
 def createList(expr):
-    '''Creates a list which can be used by convertExpression for conversion.'''
+    """Creates a list which can be used by convertExpression for conversion."""
     list1 = expr.split('(')
     list2 = []
     list3 = []
@@ -41,7 +41,7 @@ def createList(expr):
 
 
 def mergeNot(case, expr):
-    '''Combines NOR gate with othes to minimize the number of gates used.'''
+    """Combines NOR gate with othes to minimize the number of gates used."""
     if expr[-1] == ')':
         index = expr.find('(')
         gate = expr[:index].upper()
@@ -63,7 +63,7 @@ def mergeNot(case, expr):
 
 
 def to_and_or_not(gate, op1, op2):
-    '''Converts a general two input gate and two of its operands to use only OR, NOT, or AND gates'''
+    """Converts a general two input gate and two of its operands to use only OR, NOT, or AND gates"""
     if gate == 'AND' or gate == 'OR':
         return gate + '(' + op1 + ', ' + op2 + ')'
     elif gate == 'NAND':
@@ -91,7 +91,7 @@ def to_and_or_not(gate, op1, op2):
 
 
 def to_nand(gate, op1, op2):
-    '''Converts a general two input gate and two of its operands to use only NAND gates'''
+    """Converts a general two input gate and two of its operands to use only NAND gates"""
     if gate == 'AND':
         return 'NOT(NAND(' + op1 + ', ' + op2 + '))'
     elif gate == 'OR':
@@ -121,7 +121,7 @@ def to_nand(gate, op1, op2):
 
 
 def to_nor(gate, op1, op2):
-    '''Converts a general two input gate and two of its operands to use only NOR gates'''
+    """Converts a general two input gate and two of its operands to use only NOR gates"""
     if gate == 'OR':
         return 'NOT(NOR(' + op1 + ', ' + op2 + '))'
     elif gate == 'AND':
@@ -139,8 +139,8 @@ def to_nor(gate, op1, op2):
 
 
 def remove_not(gate, exp):
-    '''Converts a NOT gate and its operand to use the specified gate only.
-    The input gate must be NAND or NOR only.'''
+    """Converts a NOT gate and its operand to use the specified gate only.
+    The input gate must be NAND or NOR only."""
     while 'NOT' in exp:
         index = exp.find('NOT(')
         index2 = index
@@ -157,7 +157,7 @@ def remove_not(gate, exp):
 
 def convertExpression(expr, two_input=0, only_nand=0,
                       only_nor=0, only_and_or_not=0):
-    ''' Converts logical expression to an implementable form.
+    """ Converts logical expression to an implementable form.
     Make two_input 1 if only two input gates must be used.
     Make only_nand 1 if only 2 input nand gates must be used.
     Make only_nor 1 if only 2 input nor gates must be used.
@@ -179,7 +179,7 @@ def convertExpression(expr, two_input=0, only_nand=0,
 
     convertExpression('( NOT(a) and NOT(b)) or (C and Not(d) and E and F)', only_and_or_not=1)
     OR(AND(NOT(a), NOT(b)), AND(C, AND(NOT(d), AND(E, F))))
-    '''
+    """
     expr = makeCompatible(expr)
     list1 = createList(expr)
     while ')' in list1:
