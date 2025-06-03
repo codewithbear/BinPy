@@ -304,6 +304,8 @@ class Pin():
         self.set_pin_param(param_dict)
 
     def set_pin_param(self, param_dict):
+        """
+        """
         if isinstance(param_dict, dict):
             # If a dictionary of parameters is passed, store the contents of the dictionary to the
             # respective parameters
@@ -332,13 +334,17 @@ class Pin():
         return str(self.value)
 
     def __call__(self):
-        """ The call method returns the Logic value of the pin """
+        """
+        The call method returns the Logic value of the pin
+        """
         # This method can be used in IC implementations
         return Logic(self.value)
 
 
 def pinlist_quick(first_arg):
-    """Defines a method to quickly convert a list of Logic states to pin instances"""
+    """
+    Defines a method to quickly convert a list of Logic states to pin instances
+    """
     if isinstance(first_arg, list):
         # Quickly converts a list of Logic values to a list of Pin instances
         lst_of_pins = list()
@@ -365,43 +371,57 @@ class Logic():
         # Tri state Logic can be introduced later on ...
 
     def __add__(self, right):
-        '''OR Gate equivalent'''
+        """
+        OR Gate equivalent
+        """
         return Logic(OR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's OR Gate implementation
 
     def __or__(self, right):
-        '''OR Gate equivalent'''
+        """
+        OR Gate equivalent
+        """
         return Logic(OR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's OR Gate implementation
 
     def __xor__(self, right):
-        '''XOR Gate'''
+        """
+        XOR Gate
+        """
         return Logic(XOR(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's XOR Gate implementation
 
     def __mul__(self, right):
-        '''AND Gate'''
+        """
+        AND Gate
+        """
         return Logic(AND(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's AND Gate implementation
 
     def __and__(self, right):
-        '''AND Gate'''
+        """
+        AND Gate
+        """
         return Logic(AND(self.value, right.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's AND Gate implementation
 
     def __invert__(self):
-        '''NOT Gate'''
+        """
+        NOT Gate
+        """
         return Logic(NOT(self.value).output())
         # Returns a Logic instance corresponding to the boolean value of the
         # output of BinPy's NOT Gate implementation
 
     def __call__(self):
-        '''Returns the binary equivalent of the Logic value of self'''
+        """
+        Returns the binary equivalent of the Logic value of self
+        """
         return int(self.value)
 
     def __int__(self):

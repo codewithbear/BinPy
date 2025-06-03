@@ -16,7 +16,7 @@ from BinPy.connectors.connector import *
 
 class Tree:
 
-    '''
+    """
     This class is a tree representation of a digital element, such as a
     gate, and its inputs. The class uses the backtrack() function which follows
     the element and tracks the inputs, and inputs of inputs, and so on, thus
@@ -70,10 +70,10 @@ class Tree:
                 |- [1] AND Gate; Output: 0; Inputs: [0, True];
              |- False
        |- True
-    '''
+    """
 
     def __init__(self, element, depth=0, cycles=True):
-        '''
+        """
         Constructor for the tree class
 
         Keyword arguments:
@@ -81,7 +81,7 @@ class Tree:
                    the root of the tree. The inputs will be the sons.
         depth   -- Depth until which the inputs are tracked. (default 0)
         cycles  -- If the tree such track cycles in the circuits or not. (default True)
-        '''
+        """
         self.element = element
         self.depth = depth
         self.cycles = cycles
@@ -89,11 +89,11 @@ class Tree:
         self.sons = []
 
     def set_depth(self, val):
-        '''
+        """
         Sets depth until which the tree is constructed.
 
         val -- New depth.
-        '''
+        """
 
         self.depth = val
         self.reset_tree()
@@ -103,14 +103,14 @@ class Tree:
         self.hist = None
 
     def backtrack(self, hist=None):
-        '''
+        """
         Constructs the backtrack hierarchy of the tree up to self.depth.
 
         Keyword arguments:
         hist -- An instance of CycleHist. A class which maintains the passed
                 tracked if backtrack is not following cycles. Should only be
                 used internally.
-        '''
+        """
 
         # Store new history if available, or create new one
         if hist is not None:
@@ -165,7 +165,7 @@ class Tree:
                     self.sons.append(son)
 
     def print_tree(self, space=0):
-        '''
+        """
         This function prints the tree in a readable way.
         The way a gate, or a mux or any other digital element gets
         represented depends on it's __str__() implementation.
@@ -173,7 +173,7 @@ class Tree:
         Keyword arguments:
         space -- Number of spaces which are going to be printed in each
                  recursive step. Should only be used internally. (default 0)
-        '''
+        """
         self.print_tuple(self.node)
 
     def print_tuple(self, tree_node, space=0):
@@ -205,24 +205,24 @@ class Tree:
 
 class CycleHist:
 
-    '''
+    """
     This class helps to keep the cycle history of a circuit by registering
     occurrences of a digital element. The class has a dictionary that stores
     an instance of CycleHistValue for each key element.
-    '''
+    """
 
     def __init__(self):
         self.hist = {}
         self.current_index = 0
 
     def reg_occurrence(self, element):
-        '''
+        """
         Register an occurrence for an element. If the element has been seen
         before, mark that element has a repeating element.
 
         Keyword arguments:
         element -- Any digital element to be added to the dictionary.
-        '''
+        """
 
         # If the element has been seen before
         if element in self.hist.keys():
@@ -240,65 +240,65 @@ class CycleHist:
             self.hist[element] = CycleHistValue()
 
     def get_index(self, element):
-        '''
+        """
         Get the repetition index for the given element
 
         Keyword arguments:
         element -- A digital element in the dictionary
-        '''
+        """
 
         return self.hist[element].get_index()
 
     def is_repeated(self, element):
-        '''
+        """
         Check if the given element is repeating or not
 
         Keyword arguments:
         element -- The element that is being check if it is repeated or not.
-        '''
+        """
 
         return self.hist[element].is_repeated()
 
 
 class CycleHistValue:
 
-    '''
+    """
     This class represents the value in the dictionary of the CycleHist class.
     It has the index of the element and if it has been repeated or not.
-    '''
+    """
 
     def __init__(self):
         self.repeated = False
         self.index = 0
 
     def set_index(self, index):
-        '''
+        """
         Set the index of the element for which this instance is associated.
 
         Keyword arguments:
         index -- The index in question.
-        '''
+        """
 
         self.index = index
 
     def get_index(self):
-        '''
+        """
         Get index of the element of this instance.
-        '''
+        """
 
         return self.index
 
     def set_repeated(self):
-        '''
+        """
         Set is the element of this instance is repeated or not.
-        '''
+        """
 
         self.repeated = True
 
     def is_repeated(self):
-        '''
+        """
         Check if the element for which this instance is associated is repeated
         or not.
-        '''
+        """
 
         return self.repeated

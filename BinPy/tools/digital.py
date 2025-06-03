@@ -1,6 +1,6 @@
 class DigitDisplay:
 
-    '''
+    """
     This class emulates a 7 segmented display(Common Cathode)
 
     Parameters:
@@ -24,16 +24,16 @@ class DigitDisplay:
     =========
 
     http://tronixstuff.files.wordpress.com/2010/05/7segpinout.jpg
-    '''
+    """
 
     def __init__(self, name=None):
         self.name = name
 
     def evaluate(self, pin_conf):
-        '''
+        """
         This method evaluates the values passed according to the display and returns
         an integer varying from 0 to 9
-        '''
+        """
         if len(pin_conf) != 10:
             if len(pin_conf) != 7:
                 raise Exception("There must be 10 or 7 values")

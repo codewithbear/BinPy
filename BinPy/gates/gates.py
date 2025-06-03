@@ -18,9 +18,9 @@ from BinPy.connectors.connector import *
 
 class GATES:
 
-    '''
+    """
     Base Class implementing all common functions used by Logic Gates
-    '''
+    """
 
     def __init__(self, *inputs):
 
@@ -152,19 +152,19 @@ class GATES:
         return self.result
 
     def __repr__(self):
-        '''
+        """
         Simple way to do 'print g', where g would be an instance of any gate
         class. Functions returns the result of self.output() as a string.
-        '''
+        """
 
         return str(self.output())
 
     def build_str(self, gate_name):
-        '''
+        """
         Returns a string representation of a gate, where gate_name is the class
         name For example, for an AND gate with two inputs the resulting string
         would be: 'AND Gate; Output: 0; Inputs: [0, 1];'
-        '''
+        """
 
         return gate_name + " Gate; Output: " + \
             str(self.output()) + "; Inputs: " + \
