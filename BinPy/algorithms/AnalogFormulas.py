@@ -3,7 +3,7 @@ from __future__ import division
 
 class OhmsLaw:
 
-    '''
+    """
     This class implements Ohm's law for circuit analysis
     It requires any two parameters and it will calculate the other two.
 
@@ -16,14 +16,14 @@ class OhmsLaw:
 
     Methods:
         evaluate(i=None,v=None,r=None,p=None)
-    '''
+    """
 
     def evaluate(self, i=None, v=None, r=None, p=None):
-        '''
+        """
         This method returns a dictionary of current, voltage, power,
         and resistance
         DictKeys: 'i', 'v', 'r', 'p'
-        '''
+        """
         values = [i, v, r, p]
 
         if sum(j is None for j in values) > 2:
@@ -58,7 +58,7 @@ class OhmsLaw:
 
 class OhmsLaw_AC:
 
-    '''
+    """
     This class implements Ohm's law for circuit analysis using AC current
     It requires any three parameters and it will calculate the other two.
 
@@ -69,14 +69,14 @@ class OhmsLaw_AC:
 
     Methods:
         evaluate(i=None,v=None,z=None,p=None,cos=None)
-    '''
+    """
 
     def evaluate(self, i=None, v=None, z=None, p=None, c=None):
-        '''
+        """
         This method returns a dictionary of current, voltage, power,
         resistance and cosine
         DictKeys: 'i', 'v', 'z', 'p','c'
-        '''
+        """
         values = [i, v, z, p, c]
 
         if sum(j is None for j in values) > 3:

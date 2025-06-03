@@ -34,15 +34,15 @@ def FullAdder_test():
 
     assert [con2.state, con1.state] == fa.output()
 
-'''
+"""
 def BCDAdder_test():
     ba = BCDAdder([0, 1, 1, 0], [0, 0, 1, 1], 0)
     assert ba.output() == [0, 1, 0, 0, 1]
 
     ba = BCDAdder([0, 1, 1, 0], [0, 0, 1, 1], 1)
     assert ba.output() == [0, 0, 1, 1, 1]
-'''
-
+"""
+    
 
 def HalfSubtractor_test():
     hs = HalfSubtractor(0, 1)
